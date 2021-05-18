@@ -28,7 +28,7 @@ public class UploadService {
 		try {
 //			Integer id = uploadRepository.getMaxUploadId() + 1;
 			System.out.println(upload.toString());
-			Upload newUpload = uploadRepository.save(new Upload(upload.getTitle(),upload.getArtistName(),upload.getMedium(),upload.getCategory(),upload.getSize(),upload.getDescription(),upload.getPrice(),upload.getImage()));
+			Upload newUpload = uploadRepository.save(new Upload(upload.getTitle(),upload.getArtistName(),upload.getMedium(),upload.getCategory(),upload.getSize(),upload.getDescription(),upload.getPrice(),upload.getImage(),upload.getPhoneNumber()));
 			System.out.println(newUpload.toString());
 			return new ResponseEntity<>(newUpload,HttpStatus.CREATED);
 		}catch(Exception e) {
@@ -94,6 +94,7 @@ public class UploadService {
 				_upload.setDescription(upload.getDescription());
 				_upload.setPrice(upload.getPrice());
 				_upload.setImage(upload.getImage());
+				_upload.setPhoneNumber(upload.getPhoneNumber());
 				return new ResponseEntity<>(uploadRepository.save(_upload),HttpStatus.OK);
 			}
 			return new ResponseEntity<> (HttpStatus.NOT_FOUND);

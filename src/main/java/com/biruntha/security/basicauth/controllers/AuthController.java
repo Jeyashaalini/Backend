@@ -66,7 +66,7 @@ public class AuthController {
 		return ResponseEntity.ok(new BasicAuthResponse(basicToken, 
 												 userDetails.getId(), 
 												 userDetails.getUsername(), 
-												 userDetails.getEmail(), 
+												 userDetails.getEmail(),
 												 roles));
 	}
 
@@ -86,7 +86,7 @@ public class AuthController {
 		// Create new user's account
 		User user = new User(signUpRequest.getUsername(), 
 							 signUpRequest.getEmail(),
-							 signUpRequest.getPassword());
+				             signUpRequest.getPassword());
 
 		Set<String> strRoles = signUpRequest.getRoles();
 		Set<Role> roles = new HashSet<>();

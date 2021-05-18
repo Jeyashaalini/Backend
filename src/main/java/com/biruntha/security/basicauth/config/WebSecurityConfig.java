@@ -19,7 +19,7 @@ import com.biruntha.security.basicauth.services.UserDetailsServiceImpl;
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
-	
+
 	@Autowired
 	UserDetailsServiceImpl userDetailsService;
 
@@ -50,8 +50,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 			.authorizeRequests().antMatchers("/api/auth/**").permitAll()
 			.antMatchers("/api/test/**").permitAll()
 			.antMatchers("/api/users/**").permitAll()
+				.antMatchers("/upload/**").permitAll()
 				.antMatchers("/images/**").permitAll()
 				.antMatchers("/events/**").permitAll()
+				.antMatchers("/pending/**").permitAll()
+				.antMatchers("/api/auth/payment/**").permitAll()
+
 
 			.anyRequest().authenticated()
 			.and().httpBasic();

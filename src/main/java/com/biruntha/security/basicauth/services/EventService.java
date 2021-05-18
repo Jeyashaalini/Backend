@@ -22,12 +22,10 @@ import com.biruntha.security.basicauth.models.Event;
 import com.biruntha.security.basicauth.repository.EventRepository;
 
 @Service
-
 public class EventService {
-
 	@Autowired
 	EventRepository eventRepository;
-	
+
 	public ResponseEntity<Event> createEvent (Event event) {
 		try {
 			Event ff=eventRepository.save(event);
@@ -36,19 +34,20 @@ public class EventService {
 		    	   return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
 		    	   }
 		 }
-	
+
 	public ResponseEntity<List<Event>> getAllEvents() {
 		try {
-			List<Event>events= new ArrayList<>();
+			System.out.println("Hello");
+			List<Event> events= new ArrayList<>();
 			eventRepository.findAll().forEach(events::add);
-	  
-		if (events.isEmpty()) { 
+			System.out.println(events);
+			if (events.isEmpty()) {
 			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 		}
 		else {
 			return new ResponseEntity<>(events,HttpStatus.OK);
 		}
-		}catch (Exception e) { 
+		}catch (Exception e) {
 			return new ResponseEntity<>(null,HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
@@ -72,14 +71,14 @@ public class EventService {
 
 
 	public ResponseEntity<Event> getEventById(String id)
-	 { Optional<Event> ff = eventRepository.findById(id); 
+	 { Optional<Event> ff = eventRepository.findById(id);
 	if (ff.isPresent())
 	 { return new ResponseEntity<>(ff.get(), HttpStatus.OK);
-	 } 
-	else 
-	 { return new ResponseEntity<>(HttpStatus.NOT_FOUND); } 
-	 } 
-	
+	 }
+	else
+	 { return new ResponseEntity<>(HttpStatus.NOT_FOUND); }
+	 }
+
 	public ResponseEntity<Event>updateEvent
 	(@PathVariable  String id,@RequestBody Event event){
 		Optional<Event> p=eventRepository.findById(id);
@@ -88,9 +87,9 @@ public class EventService {
 			_event.setTitle(event.getTitle());
 			_event.setImageUrl(event.getImageUrl());
 			_event.setDescription(event.getDescription());
-			_event.setDate(event.getDate());
 			_event.setImage(event.getImage());
-			
+			_event.setDate(event.getDate());
+
 			Event updatedEvent=eventRepository.save(_event);
 			return new ResponseEntity<>(updatedEvent,HttpStatus.OK);
 		}
@@ -112,19 +111,19 @@ public class EventService {
 			return new ResponseEntity<>(null,HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
-	
-	public ResponseEntity<Page<Event>> getEventBySearch(String searchText, int pageNo, int pageSize, String sortBy) {
-	    try {    
-	    	Pageable pageable = PageRequest.of(pageNo, pageSize, Sort.by(sortBy));
-	    	Page<Event> eventPages = eventRepository.searchEvent(pageable, ".*" + searchText + ".*");
-	    if (eventPages.isEmpty()) {
-	             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-	    }
-	        return new ResponseEntity<>(eventPages, HttpStatus.OK);
-	    } catch (Exception e) {
-	        return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-	    }
-	}
 
-	
+	// public ResponseEntity<Page<Event>> getEventBySearch(String searchText, int pageNo, int pageSize, String sortBy) {
+	//     try {
+	//     	Pageable pageable = PageRequest.of(pageNo, pageSize, Sort.by(sortBy));
+	//     	Page<Event> eventPages = eventRepository.searchEvent(".*" + searchText + ".*", pageable);
+	//     if (eventPages.isEmpty()) {
+	//              return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+	//     }
+	//         return new ResponseEntity<>(eventPages, HttpStatus.OK);
+	//     } catch (Exception e) {
+	//         return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+	//     }
+	// }
+
+
 }

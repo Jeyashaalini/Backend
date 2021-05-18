@@ -17,8 +17,10 @@ public class Upload {
 	private String description;
 	private long price;
 	List<String> image;
+	private String phoneNumber;
+
 	public Upload( String title, String artistName, String medium, String category, String size,
-			String description, long price, List<String> image) {
+			String description, long price, List<String> image, String phoneNumber) {
 		super();
 		
 		this.title = title;
@@ -29,6 +31,7 @@ public class Upload {
 		this.description = description;
 		this.price = price;
 		this.image = image;
+		this.phoneNumber = phoneNumber;
 	}
 	public String getId() {
 		return id;
@@ -84,5 +87,10 @@ public class Upload {
 	public void setImage(List<String> image) {
 		this.image = image;
 	}
-	
+	public String getPhoneNumber() {
+		return phoneNumber;
+	}
+	public void setPhoneNumber(String phoneNumber) {
+		this.phoneNumber = phoneNumber;
+	}
 }

@@ -29,6 +29,8 @@ public class User {
   @Size(max = 120)
   private String password;
 
+
+
   @DBRef
   private Set<Role> roles = new HashSet<>();
 
@@ -39,6 +41,7 @@ public class User {
     this.username = username;
     this.email = email;
     this.password = password;
+
   }
 
   public String getId() {

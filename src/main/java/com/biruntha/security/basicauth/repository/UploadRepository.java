@@ -14,7 +14,7 @@ import com.biruntha.security.basicauth.models.Upload;
 public interface UploadRepository extends MongoRepository<Upload, String>{
 	
 	
-	@Query("{$or: [ { 'title': { $regex: ?0 , $options: 'i' } }, { 'artistName':{ $regex: ?0, $options: 'i' } },{ 'medium':{ $regex: ?0, $options: 'i' } },{ 'category':{ $regex: ?0, $options: 'i' } },{ 'description': { $regex: ?0 , $options: 'i' } } ]}")
+	@Query("{$or: [ { 'title': { $regex: ?0 , $options: 'i' } }, { 'artistName':{ $regex: ?0, $options: 'i' } },{ 'medium':{ $regex: ?0, $options: 'i' } },{ 'category':{ $regex: ?0, $options: 'i' } },{ 'phoneNumber':{ $regex: ?0, $options: 'i' } },{ 'description': { $regex: ?0 , $options: 'i' } } ]}")
 	List<Upload> findBySearchContaining(String searchString);
 
 	@Query("{$and: [{'medium' : { $regex: ?0}},{'category':{$regex:?1}},{'price':{$gt:?2,$lt:?3}}]}")

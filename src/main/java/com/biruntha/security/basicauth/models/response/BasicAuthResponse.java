@@ -10,6 +10,7 @@ public class BasicAuthResponse {
 	private String email;
 	private List<String> roles;
 
+
 	public BasicAuthResponse(String basicToken, String id, String username, String email, List<String> roles) {
 		this.token = basicToken;
 		this.id = id;
@@ -17,7 +18,6 @@ public class BasicAuthResponse {
 		this.email = email;
 		this.roles = roles;
 	}
-
 	public String getBasicToken() {
 		return token;
 	}

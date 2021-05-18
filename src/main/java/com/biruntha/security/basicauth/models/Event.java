@@ -15,16 +15,16 @@ public class Event {
 	private String image;
 	private String imageUrl;
 	private String description;
-	private Date date;
+	private String date;
 
-	public Event(String id, String title, String imageUrl, String description, Date date, String image) {
+	public Event(String id, String title, String imageUrl, String description, String image, String date) {
 		super();
 		this.id = id;
 		this.title = title;
 		this.imageUrl = imageUrl;
 		this.description = description;
-		this.date = date;
 		this.image = image;
+		this.date = date;
 	}
 	public String getId() {
 		return id;
@@ -50,17 +50,18 @@ public class Event {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	public Date getDate() {
-		return date;
-	}
-	public void setDate(Date date) {
-		this.date = date;
-	}
+
 	public String getImage() {
 		return image;
 	}
 	public void setImage(String image) {
 		this.image = image;
 	}
-	
+
+	public String getDate() {
+		return date;
+	}
+	public void setDate(String date) {
+		this.date = date;
+	}
 }

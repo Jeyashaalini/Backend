@@ -33,6 +33,7 @@ public class UserDetailsImpl implements UserDetails {
 		this.email = email;
 		this.password = password;
 		this.authorities = authorities;
+
 	}
 
 	public static UserDetailsImpl build(User user) {
@@ -44,7 +45,7 @@ public class UserDetailsImpl implements UserDetails {
 				user.getId(), 
 				user.getUsername(), 
 				user.getEmail(),
-				user.getPassword(), 
+				user.getPassword(),
 				authorities);
 	}
 
@@ -60,6 +61,8 @@ public class UserDetailsImpl implements UserDetails {
 	public String getEmail() {
 		return email;
 	}
+
+
 
 	@Override
 	public String getPassword() {
