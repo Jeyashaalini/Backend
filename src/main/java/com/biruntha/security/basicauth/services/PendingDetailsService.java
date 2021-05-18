@@ -28,7 +28,7 @@ public class PendingDetailsService {
         public ResponseEntity<PendingDetails> createPending(PendingDetails pendingDetails) {
             try {
                int id = pendingDetailsRepositoryCustom.getMaxPendingDetailID()+1;
-                PendingDetails newPending = pendingDetailsRepository.save(new PendingDetails(id,pendingDetails.getUpload(),pendingDetails.getBuyerName(),pendingDetails.getBuyerAddress(),pendingDetails.getBuyerPhoneNum()));
+                PendingDetails newPending = pendingDetailsRepository.save(new PendingDetails(id,pendingDetails.getUploadId(),pendingDetails.getBuyerName(),pendingDetails.getBuyerAddress(),pendingDetails.getBuyerPhoneNum()));
 
                 return new ResponseEntity<>(newPending,HttpStatus.CREATED);
             }catch(Exception e) {

@@ -11,7 +11,7 @@ import com.biruntha.security.basicauth.models.PendingDetails;
 @Repository
 public interface PendingDetailsRepository extends MongoRepository<PendingDetails, Integer> {
     @Autowired
-        @Query("{$or: [ { 'art': { $regex: ?0 , $options: 'i' } }, { 'buyerName':{ $regex: ?0, $options: 'i' } },{ 'buyerAddress': { $regex: ?0 , $options: 'i' } },{ 'buyerPhoneNum': { $regex: ?0 , $options: 'i' } } ]}")
+        @Query("{$or: [ { 'pending': { $regex: ?0 , $options: 'i' } }, { 'buyerName':{ $regex: ?0, $options: 'i' } },{ 'buyerAddress': { $regex: ?0 , $options: 'i' } },{ 'buyerPhoneNum': { $regex: ?0 , $options: 'i' } } ]}")
         List<PendingDetails> findBySearchContaining(String searched);
 
     }

@@ -6,14 +6,14 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class PendingDetails {
 @Id
         private int id;
-        private Upload upload;
+        private String uploadId;
         private String buyerName;
         private String buyerAddress;
         private String buyerPhoneNum;
 
-        public PendingDetails(int id,Upload upload, String buyerName, String buyerAddress, String buyerPhoneNum ) {
+        public PendingDetails(int id,String uploadId, String buyerName, String buyerAddress, String buyerPhoneNum ) {
             this.id = id;
-            this.upload = upload; 
+            this.uploadId = uploadId; 
             this.buyerName = buyerName;
             this.buyerAddress = buyerAddress;
             this.buyerPhoneNum = buyerPhoneNum;
@@ -52,16 +52,16 @@ public class PendingDetails {
             this.buyerPhoneNum = buyerPhoneNum;
         }
 
-       public Upload getUpload() {
-	return upload;
+       public String getUploadId() {
+	return uploadId;
 					}
-	public void setUpload(Upload upload) {
-	this.upload = upload;
+	public void setUploadId(String uploadId) {
+	this.uploadId = uploadId;
 	} 
 
         @Override
         public String toString() {
-            return "PendingDetails [id=" + id + ", upload=" + upload + ", buyerName=" + buyerName + ", buyerAddress="
+            return "PendingDetails [id=" + id + ", uploadId=" + uploadId + ", buyerName=" + buyerName + ", buyerAddress="
                     + buyerAddress + ", buyerPhoneNum=" + buyerPhoneNum + "]";
         }
     }
